@@ -1,0 +1,24 @@
+{
+  "dictionaryDefinitions": [
+    {
+      "name": "main",
+      "path": "dictionary.txt"
+    }
+  ],
+  "ignorePaths": [
+    "*.tsbuildinfo",
+    "build",
+    "coverage",
+    "dist",
+    "node_modules",
+    "out",
+    "package-lock.json",
+    "yarn.lock"
+  ],
+  "languageSettings": [
+    {
+      "dictionaries": ["main"],
+      "languageId": "*"
+    }
+  ]
+}

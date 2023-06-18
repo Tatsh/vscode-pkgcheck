@@ -1,12 +1,31 @@
 {
+  "cSpell.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
+  "editor.rulers": [100],
+  "editor.tabSize": 2,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "files.eol": "\n",
   "files.exclude": {
     "out": false
   },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.suggest.completeFunctionCalls": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "js/ts.implicitProjectConfig.experimentalDecorators": false,
   "search.exclude": {
     "out": true
   },
-  "typescript.tsc.autoDetect": "off"
+  "typescript.tsc.autoDetect": "off",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
