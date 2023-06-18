@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-namespace Result {
+// This file is generated. Do not modify.
+export namespace Result {
   export type Error =
     | { _error: { ArchesOutOfSync: string } }
     | { _error: { BadDefaultUseFlags: string } }
@@ -50,6 +51,47 @@ namespace Result {
     | { _error: { UnknownUseFlags: string } }
     | { _error: { UnstatedIuse: string } }
     | { _error: { VulnerablePackage: string } };
+  export type Info =
+    | { _info: { LaggingStable: string } }
+    | { _info: { MissingRemoteId: string } }
+    | { _info: { OutdatedBlocker: string } }
+    | { _info: { PotentialGlobalUse: string } }
+    | { _info: { PotentialLocalUse: string } }
+    | { _info: { PotentialStable: string } }
+    | { _info: { PythonCompatUpdate: string } }
+    | { _info: { PythonMismatchedPackageName: string } }
+    | { _info: { RedundantVersion: string } }
+    | { _info: { StableRequest: string } }
+    | { _info: { UnstableOnly: string } }
+    | { _info: { VirtualKeywordsUpdate: string } };
+  export type Style =
+    | { _style: { BadCommitSummary: string } }
+    | { _style: { BadDescription: string } }
+    | { _style: { BetterCompressionUri: string } }
+    | { _style: { DuplicateEclassInherit: string } }
+    | { _style: { DuplicateKeywords: string } }
+    | { _style: { ExcessiveLineLength: string } }
+    | { _style: { HomepageInSrcUri: string } }
+    | { _style: { InvalidCommitMessage: string } }
+    | { _style: { InvalidCommitTag: string } }
+    | { _style: { MissingEAPIBlankLine: string } }
+    | { _style: { MultipleKeywordsLines: string } }
+    | { _style: { NoFinalNewline: string } }
+    | { _style: { ObsoleteUri: string } }
+    | { _style: { OverlappingKeywords: string } }
+    | { _style: { ProbableGlobalUse: string } }
+    | { _style: { ProvidedEclassInherit: string } }
+    | { _style: { PythonHasVersionUsage: string } }
+    | { _style: { RedundantDodir: string } }
+    | { _style: { RedundantLongDescription: string } }
+    | { _style: { RedundantUriRename: string } }
+    | { _style: { ReferenceInMetadataVar: string } }
+    | { _style: { StaticSrcUri: string } }
+    | { _style: { TarballAvailable: string } }
+    | { _style: { TrailingEmptyLine: string } }
+    | { _style: { UnderscoreInUseFlag: string } }
+    | { _style: { UnnecessarySlashStrip: string } }
+    | { _style: { UnsortedKeywords: string } };
   export type Warning =
     | { _warning: { AbsoluteSymlink: string } }
     | { _warning: { ArchesWithoutProfiles: string } }
@@ -175,85 +217,4 @@ namespace Result {
     | { _warning: { VirtualWithSingleProvider: string } }
     | { _warning: { VisibleVcsPkg: string } }
     | { _warning: { WrongMaintainerType: string } };
-  export type Style =
-    | { _style: { BadCommitSummary: string } }
-    | { _style: { BadDescription: string } }
-    | { _style: { BetterCompressionUri: string } }
-    | { _style: { DuplicateEclassInherit: string } }
-    | { _style: { DuplicateKeywords: string } }
-    | { _style: { ExcessiveLineLength: string } }
-    | { _style: { HomepageInSrcUri: string } }
-    | { _style: { InvalidCommitMessage: string } }
-    | { _style: { InvalidCommitTag: string } }
-    | { _style: { MissingEAPIBlankLine: string } }
-    | { _style: { MultipleKeywordsLines: string } }
-    | { _style: { NoFinalNewline: string } }
-    | { _style: { ObsoleteUri: string } }
-    | { _style: { OverlappingKeywords: string } }
-    | { _style: { ProbableGlobalUse: string } }
-    | { _style: { ProvidedEclassInherit: string } }
-    | { _style: { PythonHasVersionUsage: string } }
-    | { _style: { RedundantDodir: string } }
-    | { _style: { RedundantLongDescription: string } }
-    | { _style: { RedundantUriRename: string } }
-    | { _style: { ReferenceInMetadataVar: string } }
-    | { _style: { StaticSrcUri: string } }
-    | { _style: { TarballAvailable: string } }
-    | { _style: { TrailingEmptyLine: string } }
-    | { _style: { UnderscoreInUseFlag: string } }
-    | { _style: { UnnecessarySlashStrip: string } }
-    | { _style: { UnsortedKeywords: string } };
-  export type Info =
-    | { _info: { LaggingStable: string } }
-    | { _info: { MissingRemoteId: string } }
-    | { _info: { OutdatedBlocker: string } }
-    | { _info: { PotentialGlobalUse: string } }
-    | { _info: { PotentialLocalUse: string } }
-    | { _info: { PotentialStable: string } }
-    | { _info: { PythonCompatUpdate: string } }
-    | { _info: { PythonMismatchedPackageName: string } }
-    | { _info: { RedundantVersion: string } }
-    | { _info: { StableRequest: string } }
-    | { _info: { UnstableOnly: string } }
-    | { _info: { VirtualKeywordsUpdate: string } };
-}
-
-// From https://stackoverflow.com/a/71131506/374110
-type Explode<T> = keyof T extends infer K
-  ? K extends unknown
-    ? { [I in keyof T]: I extends K ? T[I] : never }
-    : never
-  : never;
-export type AtMostOne<T> = Explode<Partial<T>>;
-export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
-  U[keyof U];
-export type ExactlyOne<T> = AtMostOne<T> & AtLeastOne<T>;
-
-export interface CategoryPackageVersionSeverity {
-  [category: string]: {
-    [packageName: string]: {
-      [version: string]:
-        | Result.Error
-        | Result.Info
-        | Result.Style
-        | Result.Warning;
-    };
-  };
-}
-
-export type FirstKey<T> = keyof ExactlyOne<{ [K in keyof T]: never }>;
-type CPVMerged<T> = {
-  // get _info, _style, etc
-  [x in FirstKey<T>]: (T extends ExactlyOne<{
-    [K in keyof T]: infer U;
-  }>
-    ? U
-    : never)[];
-};
-
-export interface CategoryPackageVersionSeverityMerged {
-  _error?: CPVMerged<Result.Error>;
-  _info?: CPVMerged<Result.Info>;
-  _style?: CPVMerged<Result.Style>;
-  _warning?: CPVMerged<Result.Warning>;
 }
