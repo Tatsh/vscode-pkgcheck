@@ -1,21 +1,12 @@
-import {
-  flatten,
-  groupBy,
-  head,
-  keys,
-  map,
-  pipe,
-  reduce,
-  values,
-} from 'ramda';
+import { flatten, groupBy, head, keys, map, pipe, reduce, values } from "ramda";
 
 import {
   CategoryPackageVersionSeverity,
   PackageVersionSeverity,
   VersionSeverity,
-} from './types';
-import { Result } from './types/generated';
-import { CategoryPackageVersionSeverityMerged } from './types/utils';
+} from "./types";
+import { Result } from "./types/generated";
+import { CategoryPackageVersionSeverityMerged } from "./types/utils";
 
 // FIXME Make generic
 const mapValuesAndFlatten = pipe(
