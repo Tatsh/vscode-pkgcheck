@@ -1,4 +1,4 @@
-import { Result } from '../generated';
+import { Result } from "./generated";
 
 /** @link https://stackoverflow.com/a/71131506/374110 */
 type Explode<T> = keyof T extends infer K
@@ -13,8 +13,6 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 /** @link https://stackoverflow.com/a/71131506/374110 */
 export type ExactlyOne<T> = AtMostOne<T> & AtLeastOne<T>;
-
-
 
 /** Returns `true` if the object has zero keys or if a non-object is passed. */
 export type HasZeroKeys<T> = T extends Record<string, never> ? true : false;

@@ -1,4 +1,4 @@
-import { Result } from "../generated";
+import { Result } from "./generated";
 
 export interface CategoryPackageVersionSeverity {
   [category: string]: {
