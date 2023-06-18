@@ -1,13 +1,18 @@
-import { flatten, groupBy, head, keys, map, values } from "ramda";
+import { flatten, groupBy, head, keys, map, pipe, values } from "ramda";
 
 import { CategoryPackageVersionSeverity } from "./types";
+import { Result } from "./types/generated";
 import { CategoryPackageVersionSeverityMerged } from "./types/utils";
 
 export const cpvToMerged = (
   rawDiag: CategoryPackageVersionSeverity[]
 ): CategoryPackageVersionSeverityMerged => {
   const messages = groupBy(
-    (obj) => head<string>(keys(obj)) as string,
+    pipe<
+      [a: Result.Error | Result.Info | Result.Warning | Result.Style],
+      string[],
+      string
+    >(keys, head),
     flatten(map(values, flatten(map(values, flatten(map(values, rawDiag))))))
   );
   const merged: { [x: string]: { [x: string]: string }[] } = {};
