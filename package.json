@@ -72,6 +72,7 @@
   "main": "./out/extension.js",
   "name": "pkgcheck",
   "scripts": {
+    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
     "compile": "tsc -p ./",
     "format": "format-imports src && prettier -w './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "pretest": "yarn run compile && yarn run lint",
