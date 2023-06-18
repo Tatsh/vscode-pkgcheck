@@ -6,43 +6,76 @@
   "categories": [
     "Other"
   ],
-  "contributes": {
-    "commands": [
-      {
-        "command": "pkgcheck.helloWorld",
-        "title": "Hello World"
-      }
-    ]
-  },
+  "contributes": {},
   "dependencies": {
     "execa": "^5.0.0",
-    "ramda": "^0.29.0"
+    "ramda": "^0.29.0",
+    "ramda-adjunct": "^4.0.0",
+    "tslib": "^2.5.0"
   },
   "description": "",
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
-    "@types/node": "20.2.5",
+    "@types/node": "20.3.1",
     "@types/ramda": "^0.29.2",
     "@types/vscode": "^1.79.0",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "@vscode/test-electron": "^2.3.2",
+    "cspell": "^6.31.1",
     "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
+    "format-imports": "^3.2.5",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
+    "prettier": "^2.8.7",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
     "typescript": "^5.1.3"
   },
   "displayName": "pkgcheck",
   "engines": {
     "vscode": "^1.79.0"
   },
+  "importSorter": {
+    "autoFormat": "off",
+    "groupRules": [
+      {
+        "flags": "scripts"
+      },
+      {
+        "regex": "^[@0-9a-zA-Z]"
+      },
+      {
+        "regex": "^\\."
+      },
+      {
+        "regex": "^(src)"
+      }
+    ],
+    "keepUnused": [
+      "."
+    ],
+    "removeLastIndexInPath": true,
+    "removeLastSlashInPath": true,
+    "sortRules": {
+      "names": [
+        "_",
+        "AZ",
+        "Aa"
+      ]
+    }
+  },
   "main": "./out/extension.js",
   "name": "pkgcheck",
   "scripts": {
     "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
+    "format": "format-imports src && prettier -w './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "pretest": "yarn run compile && yarn run lint",
+    "qa": "eslint --report-unused-disable-directives src",
     "test": "node ./out/test/runTest.js",
     "vscode:prepublish": "yarn run compile",
     "watch": "tsc -watch -p ./"

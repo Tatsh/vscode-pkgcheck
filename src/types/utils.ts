@@ -1,4 +1,4 @@
-import { Result } from "./generated";
+import { Result } from './generated';
 
 /** @link https://stackoverflow.com/a/71131506/374110 */
 type Explode<T> = keyof T extends infer K
@@ -9,8 +9,7 @@ type Explode<T> = keyof T extends infer K
 /** @link https://stackoverflow.com/a/71131506/374110 */
 export type AtMostOne<T> = Explode<Partial<T>>;
 /** @link https://stackoverflow.com/a/71131506/374110 */
-export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
-  U[keyof U];
+export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U];
 /** @link https://stackoverflow.com/a/71131506/374110 */
 export type ExactlyOne<T> = AtMostOne<T> & AtLeastOne<T>;
 

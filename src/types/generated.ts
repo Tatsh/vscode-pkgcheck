@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 // This file is generated. Do not modify.
 export namespace Result {
   export type Error =
