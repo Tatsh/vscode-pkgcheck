@@ -217,4 +217,5 @@ export namespace Result {
     | { _warning: { VirtualWithSingleProvider: string } }
     | { _warning: { VisibleVcsPkg: string } }
     | { _warning: { WrongMaintainerType: string } };
+  export type Result = Error | Info | Style | Warning;
 }

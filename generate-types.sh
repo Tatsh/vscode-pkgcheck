@@ -19,4 +19,5 @@ for i in error info style warning; do
         echo "$item"
     done
 done
+echo '    export type Result = Error | Info | Style | Warning;'
 echo '}'
