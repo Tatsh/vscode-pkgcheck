@@ -16,6 +16,7 @@ insinto
 iuse
 linebreak
 nonsolvable
+outfile
 parens
 piuri
 pkgcheck
@@ -24,6 +25,7 @@ quickstart
 rdepend
 revbump
 slotmove
+tatsh
 tsbuildinfo
 udvare
 vsix

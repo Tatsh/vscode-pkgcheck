@@ -24,6 +24,7 @@
     "@typescript-eslint/parser": "^5.59.8",
     "@vscode/test-electron": "^2.3.2",
     "cspell": "^6.31.1",
+    "esbuild": "^0.18.5",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -72,6 +73,7 @@
   "license": "MIT",
   "main": "./out/extension.js",
   "name": "pkgcheck",
+  "publisher": "Tatsh",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tatsh/vscode-pkgcheck.git"
@@ -80,12 +82,15 @@
     "check-format": "prettier -c './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
     "compile": "tsc -p ./",
+    "esbuild": "yarn esbuild-base --sourcemap",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --target=es6 --platform=node",
+    "esbuild-watch": "yarn esbuild-base --sourcemap --watch",
     "eslint": "eslint --report-unused-disable-directives src",
     "format": "format-imports src && prettier -w './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "yarn compile",
     "qa": "yarn check-spelling && yarn check-format && eslint --report-unused-disable-directives src",
     "test": "node ./out/test/runTest.js",
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "yarn esbuild-base --minify",
     "watch": "tsc -watch -p ./"
   },
   "version": "0.0.1"
