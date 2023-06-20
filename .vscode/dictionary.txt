@@ -25,5 +25,6 @@ rdepend
 revbump
 slotmove
 tsbuildinfo
+udvare
 vsix
 yarnrc
