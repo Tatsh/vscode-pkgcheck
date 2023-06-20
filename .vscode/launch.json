@@ -3,8 +3,8 @@
     {
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
       "name": "Run Extension",
-      "outFiles": ["${workspaceFolder}/out/**/*.js"],
-      "preLaunchTask": "${defaultBuildTask}",
+      "outFiles": ["${workspaceFolder}/out/main.js"],
+      "preLaunchTask": "npm: esbuild",
       "request": "launch",
       "type": "extensionHost"
     },
