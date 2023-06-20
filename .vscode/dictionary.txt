@@ -5,6 +5,7 @@ chksums
 distfile
 distutils
 dodir
+ebuilds
 eclass
 eclasses
 eend
