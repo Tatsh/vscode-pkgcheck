@@ -72,6 +72,10 @@
   "license": "MIT",
   "main": "./out/extension.js",
   "name": "pkgcheck",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tatsh/vscode-pkgcheck.git"
+  },
   "scripts": {
     "check-format": "prettier -c './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
