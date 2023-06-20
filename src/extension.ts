@@ -132,28 +132,30 @@ async function getDiagnostics(
   return diagnostics;
 }
 
+const isValidDocument = (textDocument: vscode.TextDocument) =>
+  getFilePath(textDocument).endsWith('.ebuild') &&
+  vscode.languages.match(['shellscript'], textDocument);
+
+const runDiagnosticsOnActiveTextEditor = async (textDocument: vscode.TextDocument) => {
+  if (vscode.window.activeTextEditor?.document.uri) {
+    try {
+      diagnosticCollection.set(
+        vscode.window.activeTextEditor.document.uri,
+        await getDiagnostics(vscode.window.activeTextEditor.document, getFilePath(textDocument)),
+      );
+    } catch (e) {
+      console.error('@@ error calling pkgcheck');
+    }
+  } else {
+    console.debug('No active text editor?');
+  }
+};
+
 export function activate(context: vscode.ExtensionContext) {
   vscode.workspace.onDidOpenTextDocument(
     async textDocument => {
-      const ebuildPath = getFilePath(textDocument);
-      if (
-        !ebuildPath ||
-        !!vscode.languages.match(['shellscript'], textDocument) ||
-        !ebuildPath.endsWith('.ebuild')
-      ) {
-        return;
-      }
-      if (vscode.window.activeTextEditor?.document.uri) {
-        try {
-          diagnosticCollection.set(
-            vscode.window.activeTextEditor.document.uri,
-            await getDiagnostics(vscode.window.activeTextEditor.document, ebuildPath),
-          );
-        } catch (e) {
-          console.error('@@ error calling pkgcheck');
-        }
-      } else {
-        console.debug('No active text editor?');
+      if (isValidDocument(textDocument)) {
+        await runDiagnosticsOnActiveTextEditor(textDocument);
       }
     },
     undefined,
@@ -161,6 +163,15 @@ export function activate(context: vscode.ExtensionContext) {
   );
   vscode.workspace.onDidCloseTextDocument(
     doc => diagnosticCollection.delete(doc.uri),
+    undefined,
+    context.subscriptions,
+  );
+  vscode.workspace.onDidSaveTextDocument(
+    async doc => {
+      if (isValidDocument(doc)) {
+        await runDiagnosticsOnActiveTextEditor(doc);
+      }
+    },
     undefined,
     context.subscriptions,
   );
