@@ -33,7 +33,6 @@ export const cpvToMerged = (
   const messages = groupBySeverity(rawDiagnostics);
   return reduce(
     (acc, key) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       acc[key] = concat(acc[key], mapValuesAndFlatten(messages[key]) as any); // FIXME any
       return acc;
     },
