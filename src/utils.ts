@@ -1,4 +1,12 @@
-import { concat, flatten, groupBy, head, keys, map, pipe, reduce, values } from 'ramda';
+import concat from 'ramda/es/concat';
+import flatten from 'ramda/es/flatten';
+import groupBy from 'ramda/es/groupBy';
+import head from 'ramda/es/head';
+import keys from 'ramda/es/keys';
+import map from 'ramda/es/map';
+import pipe from 'ramda/es/pipe';
+import reduce from 'ramda/es/reduce';
+import values from 'ramda/es/values';
 import * as vscode from 'vscode';
 
 import { CategoryPackageVersionSeverity, PackageVersionSeverity, VersionSeverity } from './types';

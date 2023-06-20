@@ -1,6 +1,8 @@
 import execa from 'execa';
 import { dirname } from 'path';
-import { head, keys, values } from 'ramda';
+import head from 'ramda/es/head';
+import keys from 'ramda/es/keys';
+import values from 'ramda/es/values';
 import * as vscode from 'vscode';
 
 import { CATEGORY_TO_VARIABLE_MAPPING } from './constants';
