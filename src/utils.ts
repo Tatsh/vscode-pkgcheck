@@ -1,4 +1,5 @@
-import { flatten, groupBy, head, keys, map, pipe, reduce, values } from 'ramda';
+import { concat, flatten, groupBy, head, keys, map, pipe, reduce, values } from 'ramda';
+import * as vscode from 'vscode';
 
 import { CategoryPackageVersionSeverity, PackageVersionSeverity, VersionSeverity } from './types';
 import { Result } from './types/generated';
@@ -33,7 +34,7 @@ export const cpvToMerged = (
   return reduce(
     (acc, key) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      acc[key].push(mapValuesAndFlatten(messages[key]) as any); // FIXME any
+      acc[key] = concat(acc[key], mapValuesAndFlatten(messages[key]) as any); // FIXME any
       return acc;
     },
     {
@@ -41,7 +42,14 @@ export const cpvToMerged = (
       _info: [],
       _style: [],
       _warning: [],
-    } as { [x: string]: { [x: string]: string }[] }, // FIXME this cast should not be necessary
-    keys(messages),
+    } as CategoryPackageVersionSeverityMerged, // FIXME this cast should not be necessary
+    keys(messages) as (keyof CategoryPackageVersionSeverityMerged)[],
   );
+};
+
+export const getFilePath = (doc: vscode.TextDocument) => {
+  if (doc.uri.scheme === 'git') {
+    return (JSON.parse(doc.uri.query || '{}') as { path: string }).path;
+  }
+  return doc.uri.fsPath;
 };

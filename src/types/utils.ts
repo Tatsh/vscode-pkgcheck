@@ -1,5 +1,3 @@
-import { Result } from './generated';
-
 /** @link https://stackoverflow.com/a/71131506/374110 */
 type Explode<T> = keyof T extends infer K
   ? K extends unknown
@@ -20,17 +18,10 @@ export type HasZeroKeys<T> = T extends Record<string, never> ? true : false;
 export type FirstKey<T> = HasZeroKeys<T> extends true
   ? never
   : keyof ExactlyOne<{ [K in keyof T]: never }>;
-type CPVMerged<T> = {
-  [x in FirstKey<T>]: (T extends ExactlyOne<{
-    [K in keyof T]: infer U;
-  }>
-    ? U
-    : never)[];
-};
 
 export interface CategoryPackageVersionSeverityMerged {
-  _error?: CPVMerged<Result.Error>;
-  _info?: CPVMerged<Result.Info>;
-  _style?: CPVMerged<Result.Style>;
-  _warning?: CPVMerged<Result.Warning>;
+  _error: { [errorCategory: string]: string }[];
+  _info: { [infoCategory: string]: string }[];
+  _style: { [styleCategory: string]: string }[];
+  _warning: { [warningCategory: string]: string }[];
 }
