@@ -1,6 +1,6 @@
-out
+*.tsbuildinfo
+*.vsix
+.vscode-test/
 dist
 node_modules
-.vscode-test/
-*.vsix
-*.tsbuildinfo
+out
