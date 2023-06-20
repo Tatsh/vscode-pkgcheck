@@ -84,6 +84,7 @@ async function getDiagnostics(
       vscode.DiagnosticSeverity.Information,
     );
     diagnostic.source = 'pkgcheck';
+    diagnostics.push(diagnostic);
   }
   for (const style of merged._style) {
     let startPos = new vscode.Position(0, 0);
@@ -102,6 +103,7 @@ async function getDiagnostics(
       vscode.DiagnosticSeverity.Hint,
     );
     diagnostic.source = 'pkgcheck';
+    diagnostics.push(diagnostic);
   }
   for (const warning of merged._warning) {
     let startPos = new vscode.Position(0, 0);
