@@ -93,5 +93,5 @@
     "vscode:prepublish": "yarn esbuild-base --minify",
     "watch": "tsc -watch -p ./"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
