@@ -72,11 +72,13 @@
   "main": "./out/extension.js",
   "name": "pkgcheck",
   "scripts": {
+    "check-format": "prettier -c './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
     "compile": "tsc -p ./",
+    "eslint": "eslint --report-unused-disable-directives src",
     "format": "format-imports src && prettier -w './**/*.md' './**/*.ts' './**/*.y*ml' ./.prettierrc",
     "pretest": "yarn run compile && yarn run lint",
-    "qa": "eslint --report-unused-disable-directives src",
+    "qa": "yarn check-spelling && yarn check-format && eslint --report-unused-disable-directives src",
     "test": "node ./out/test/runTest.js",
     "vscode:prepublish": "yarn run compile",
     "watch": "tsc -watch -p ./"
