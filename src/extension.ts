@@ -50,13 +50,13 @@ async function getDiagnostics(
     let startPos = new vscode.Position(0, 0);
     let endPos = new vscode.Position(0, 0);
     const key = head(keys(error)) as string;
-    switch (key) {
-      default:
-        if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
-          [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
-        }
-        break;
+    // switch (key) {
+    //   default:
+    if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
+      [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
     }
+    //     break;
+    // }
     const diagnostic = new vscode.Diagnostic(
       new vscode.Range(startPos, endPos),
       `${key}: ${head(values(error)) as string}`,
@@ -69,13 +69,13 @@ async function getDiagnostics(
     let startPos = new vscode.Position(0, 0);
     let endPos = new vscode.Position(0, 0);
     const key = head(keys(info)) as string;
-    switch (key) {
-      default:
-        if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
-          [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
-        }
-        break;
+    // switch (key) {
+    //   default:
+    if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
+      [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
     }
+    //     break;
+    // }
     const diagnostic = new vscode.Diagnostic(
       new vscode.Range(startPos, endPos),
       `${key}: ${head(values(info)) as string}`,
@@ -87,13 +87,13 @@ async function getDiagnostics(
     let startPos = new vscode.Position(0, 0);
     let endPos = new vscode.Position(0, 0);
     const key = head(keys(style)) as string;
-    switch (key) {
-      default:
-        if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
-          [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
-        }
-        break;
+    // switch (key) {
+    //   default:
+    if (CATEGORY_TO_VARIABLE_MAPPING[key]) {
+      [startPos, endPos] = startEndForVariableLine(doc, CATEGORY_TO_VARIABLE_MAPPING[key]);
     }
+    //     break;
+    // }
     const diagnostic = new vscode.Diagnostic(
       new vscode.Range(startPos, endPos),
       `${key}: ${head(values(style)) as string}`,
