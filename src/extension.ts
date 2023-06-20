@@ -15,7 +15,7 @@ const startEndForVariableLine = (doc: vscode.TextDocument, varName: string) => {
   let startPos = new vscode.Position(0, 0);
   let endPos = new vscode.Position(0, 0);
   const re = new RegExp(`^${varName}=`);
-  const quoteRe = new RegExp(`^${varName}="`);
+  const quoteRe = new RegExp(`^${varName}=["\\(]`);
   const col = varName.length;
   for (let l = 0; l < doc.lineCount; l++) {
     const text = doc.lineAt(l).text.trim();
