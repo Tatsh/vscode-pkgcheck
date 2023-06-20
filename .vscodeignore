@@ -3,5 +3,6 @@
 !CHANGELOG.md
 !LICENSE.md
 !README.md
-!out/
+!out/main.js
+!out/main.js.map
 !package.json
