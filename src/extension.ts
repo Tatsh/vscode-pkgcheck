@@ -134,14 +134,13 @@ async function getDiagnostics(
 
 export function activate(context: vscode.ExtensionContext) {
   vscode.workspace.onDidOpenTextDocument(
-    async (textDocument: vscode.TextDocument) => {
+    async textDocument => {
       const ebuildPath = getFilePath(textDocument);
       if (
         !ebuildPath ||
         !!vscode.languages.match(['shellscript'], textDocument) ||
         !ebuildPath.endsWith('.ebuild')
       ) {
-        diagnosticCollection.delete(textDocument.uri);
         return;
       }
       if (vscode.window.activeTextEditor?.document.uri) {
@@ -157,6 +156,11 @@ export function activate(context: vscode.ExtensionContext) {
         console.debug('No active text editor?');
       }
     },
+    undefined,
+    context.subscriptions,
+  );
+  vscode.workspace.onDidCloseTextDocument(
+    doc => diagnosticCollection.delete(doc.uri),
     undefined,
     context.subscriptions,
   );
