@@ -41,7 +41,10 @@ export const cpvToMerged = (
   const messages = groupBySeverity(rawDiagnostics);
   return reduce(
     (acc, key) => {
-      acc[key] = concat(acc[key], mapValuesAndFlatten(messages[key]) as any); // FIXME any
+      let val: (Result.Error | Result.Info | Result.Style | Result.Warning)[] | undefined;
+      if ((val = messages[key])) {
+        acc[key] = concat(acc[key], mapValuesAndFlatten(val));
+      }
       return acc;
     },
     {
