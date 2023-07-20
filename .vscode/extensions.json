@@ -1,3 +1,31 @@
 {
-  "recommendations": ["dbaeumer.vscode-eslint", "dozerg.tsimportsorter"]
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "bierner.markdown-checkbox",
+    "christian-kohler.path-intellisense",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.githistory",
+    "dozerg.tsimportsorter",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "github.vscode-pull-request-github",
+    "henriiik.vscode-sort",
+    "ivangabriele.vscode-git-add-and-commit",
+    "jmredfern.sort-selection",
+    "naumovs.color-highlight",
+    "nhoizey.gremlins",
+    "richie5um2.vscode-sort-json",
+    "ruiquelhas.vscode-lowercase",
+    "ruiquelhas.vscode-uppercase",
+    "streetsidesoftware.code-spell-checker",
+    "timonwong.shellcheck",
+    "tyriar.sort-lines",
+    "wayou.vscode-todo-highlight",
+    "wmaurer.change-case",
+    "zainchen.json",
+    "zengxingxin.sort-js-object-keys"
+  ]
 }
