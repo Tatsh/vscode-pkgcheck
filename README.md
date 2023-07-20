@@ -1,4 +1,6 @@
-# pkgcheck README
+# vscode-pkgcheck
+
+[![QA](https://github.com/Tatsh/vscode-pkgcheck/actions/workflows/qa.yml/badge.svg)](https://github.com/Tatsh/vscode-pkgcheck/actions/workflows/qa.yml)
 
 This package runs `pkgcheck` on open ebuilds and adds diagnostics.
 
