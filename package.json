@@ -22,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "@vscode/test-electron": "^2.3.2",
+    "@vscode/vsce": "^2.21.0",
     "cspell": "^6.31.2",
     "esbuild": "^0.25.0",
     "eslint": "^8.45.0",
@@ -40,7 +41,7 @@
   },
   "displayName": "pkgcheck",
   "engines": {
-    "vscode": "^1.79.0"
+    "vscode": "^1.100.0"
   },
   "eslintConfig": {
     "env": {
